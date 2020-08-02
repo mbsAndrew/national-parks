@@ -65,7 +65,7 @@ class AutoComplete extends React.Component {
                                 className = 'option-active';
                             }
                             return (
-                                <li className={className} key={optionName} onClick={() => {}}>
+                                <li data-val={optionName} className={className} key={optionName} onClick={this.props.onSubmit}>
                                     {optionName}
                                 </li>
                             );
@@ -80,28 +80,26 @@ class AutoComplete extends React.Component {
                 );
             }
 
-            
+
         }
-        return optionList;        
+        return optionList;
     }
 
     render() {
         const { userInput } = this.state;
-        const optionList = this.getOptionList();        
-        
+        const optionList = this.getOptionList();
+
         return (
             <>
-                <div className={"search-bar"}>
-                    <input
-                        type={"text"}
-                        className={"search-box"}
-                        onChange={this.onChange}
-                        onKeyDown={this.onKeyDown}
-                        value={userInput}
-                    />
-                    <input type={"submit"} value={"Search"} className={"search-btn"} />
-                    {optionList}
-                </div>
+                <input
+                    type={"text"}
+                    className={"searchBar_box"}
+                    onChange={this.onChange}
+                    onKeyDown={this.onKeyDown}
+                    value={userInput}
+                />
+                <input data-val={userInput} type={"button"} value={"Search"} className={"searchBar_btn"} onClick={this.props.onSubmit} />
+                {optionList}
             </>
         );
     }
