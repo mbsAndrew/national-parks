@@ -6,13 +6,10 @@ import NavBar from './Components/NavBar';
 
 export default function Routes() {
     return (
-        <div className="grid">
+        <div>
             <header>
                 <NavBar />
-            </header>    
-            <aside>
-                Left
-            </aside>       
+            </header>            
             <article>
                 <Switch>
                     <Route exact path="/" component={Home} />
@@ -23,13 +20,10 @@ export default function Routes() {
                 </>
                     </Route>
                 </Switch>
-            </article>
-            <aside>
-                Right
-            </aside>
+            </article>            
             <footer>
                 I'm a footer, bitch!
-        </footer>
+            </footer>
         </div>
     )
 }

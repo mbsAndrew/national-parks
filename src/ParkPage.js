@@ -1,7 +1,10 @@
 import React from 'react';
-import HeroImage from './Components/HeroImage';
 import Activities from './Components/Parks/Activities';
 import Topics from './Components/Parks/Topics';
+import Location from './Components/Parks/Location';
+import Hero from './Components/Hero/Hero';
+import HeroOptions from './Components/Hero/HeroOptions';
+import Hiking from './Components/Parks/Hiking';
 
 class ParkPage extends React.Component {
     constructor() {
@@ -12,8 +15,15 @@ class ParkPage extends React.Component {
         }
     }
 
-    componentDidMount() {
-        this.initData();
+    componentDidMount() {        
+        const { data } = this.props.location.state || false;
+        if (data) {            
+            this.setState({
+                data: data
+            })
+        } else {
+            this.initData();
+        }        
     }
 
     initData = () => {
@@ -36,11 +46,11 @@ class ParkPage extends React.Component {
             <>
                 {Object.keys(data).length > 0 ?
                     <>
-                        <HeroImage
+                        <Hero
                             img={data.images[2]}
                         >
                             <h1>
-                                {data.fullName}
+                                {data.name}
                             </h1>
                             <h2>
                                 {data.designation}
@@ -48,10 +58,18 @@ class ParkPage extends React.Component {
                             <p>
                                 {data.description}
                             </p>
-                        </HeroImage>
-                        {data.activities && <Activities activities={data.activities} />}
-                        {data.topics && <Topics topics={data.topics} />}
-                        
+                            <HeroOptions data={data} />
+                        </Hero>
+                        {data.addresses && <Location addresses={data.addresses} location={{lat: data.latitude, long: data.longitude}} />}
+                        <Hiking lat={data.latitude} long={data.longitude} />
+                        <div className={"container"}>
+                            <div className={"row"}>
+                                <div className={"col-12"}>
+                                    {data.activities && <Activities activities={data.activities} />}
+                                    {data.topics && <Topics topics={data.topics} />}
+                                </div>
+                            </div>
+                        </div>                       
                     </>
                     : "No data son!"}
             </>

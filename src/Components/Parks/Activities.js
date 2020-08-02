@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Activities (params) {    
     return (
-        <>
+        <section>
         <h2>
             Activities
         </h2>
@@ -13,6 +13,6 @@ export default function Activities (params) {
                 </li>;
             })}
         </ul>
-        </>
+        </section>
     )
 }

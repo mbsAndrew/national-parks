@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Topics(params) {
     return (
-        <>
+        <section>
             <h2>Topics</h2>
             <ul>
                 {params.topics.map(m => {
@@ -11,6 +11,6 @@ export default function Topics(params) {
                     </li>
                 })}
             </ul>
-        </>
+        </section>
     )
 }

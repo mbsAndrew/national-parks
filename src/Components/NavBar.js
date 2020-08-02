@@ -4,8 +4,12 @@ import { Link } from 'react-router-dom';
 
 export default function NavBar () {
     return (
-        <>        
-            <Link to={"/"} >Home</Link>
-        </>
+        <div className={"container"}>        
+            <div className={"row"}>
+                <div className={"col-12"}>
+                    <Link to={"/"} >Home</Link>                
+                </div>                
+            </div>
+        </div>
     );
 }
