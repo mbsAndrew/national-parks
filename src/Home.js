@@ -4,9 +4,7 @@ import AutoComplete from './Components/AutoComplete';
 
 class Home extends React.Component {
     constructor(props) {
-        super(props);
-        this.key = process.env.REACT_APP_API_KEY;
-        this.baseURL = "https://developer.nps.gov/api/v1"
+        super(props);        
         this.state = {
             data: false
         };
@@ -24,23 +22,15 @@ class Home extends React.Component {
         const newData = parkData.map(m => m["Location Name"]);
         this.setState({
             data: newData
-        });
-        // fetch(`https://developer.nps.gov/api/v1/parks?parkCard=acad&api_key=${this.key}`, {
-        //     "method": "GET",
-        //     "headers": {
-        //         "Authorization": this.key
-        //     }
-        // })
-        // .then(res => res.json())
-        // .then(data => {
-        //     console.log(data);
-        // });
+        });        
+    }
+
+    validate = (e) => {
+
     }
 
     render() {
-        const { data } = this.state;
-        console.log(data);
-        console.log(this.props);
+        const { data } = this.state;       
         return (
             <>
               {data &&
