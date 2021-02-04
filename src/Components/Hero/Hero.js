@@ -1,31 +1,55 @@
 import React from 'react';
 
 const Hero = (props) => {
-    const { img } = props;
+    const { isFull, center } = props;
     return (
-        <section className={"section_hero"}>
-            <div className={"hero"}>
-                <div className={"hero_img"}
-                    style={{
-                        background: `url(${img.url})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center center"
-                    }}
-                />
-                <div className={"hero_overlay"} />
-                <div className={"hero_content"}>
-                    <div className={"container"}>
-                        <div className={"row"}>
-                            <div className={"col-12"}>
-                                {props.children}
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
+        <section className={`section-hero ${isFull && "section-hero_full"} ${center && "section-hero_center"}`}>
+            {props.children}
         </section>
     )
 }
 
+const HeroTitle = ({addClass, children}) => {
+    return (
+        <h1 className={`hero-content_title ${addClass}`}>
+            {children}
+        </h1>
+    )
+}
+
+const HeroSubtitle = ({addClass, children}) => {
+    return (
+        <h2 className={`hero-content_subtitle ${addClass}`}>
+            {children}
+        </h2>
+    )
+};
+
+const HeroContainer = ({addClass, children}) => {
+    return (
+        <div className={`section-hero_content hero-content ${addClass}`}>
+            {children}
+        </div>
+    );
+}
+
+const HeroDescription = ({addClass, children}) => {
+    return (
+        <p className={`hero-content_description ${addClass}`}>
+            {children}
+        </p>
+    );
+}
+
+Hero.Title = HeroTitle;
+Hero.Subtitle = HeroSubtitle;
+Hero.Container = HeroContainer;
+Hero.Description = HeroDescription;
+
 export default Hero;
+
+
+Hero.defaultProps = {
+    isFull: false,
+    center: false,
+}

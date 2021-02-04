@@ -5,6 +5,8 @@ import Location from './Components/Parks/Location';
 import Hero from './Components/Hero/Hero';
 import HeroOptions from './Components/Hero/HeroOptions';
 import Hiking from './Components/Parks/Hiking';
+import LandingPage from './Components/LandingPage';
+import BackgroundImage from './Components/BackgroundImage';
 
 class ParkPage extends React.Component {
     constructor() {
@@ -45,21 +47,26 @@ class ParkPage extends React.Component {
         return (
             <>
                 {Object.keys(data).length > 0 ?
-                    <>
-                        <Hero
-                            img={data.images[2]}
-                        >
-                            <h1>
-                                {data.name}
-                            </h1>
-                            <h2>
-                                {data.designation}
-                            </h2>
-                            <p>
-                                {data.description}
-                            </p>
-                            <HeroOptions data={data} />
-                        </Hero>
+                    <>                        
+                            <Hero
+                                isFull
+                            >
+                            <BackgroundImage src={data.images[2].url}>   
+                                <Hero.Container>
+                                    <Hero.Title>
+                                        {data.name}
+                                    </Hero.Title>
+                                    <Hero.Subtitle>
+                                        {data.designation}
+                                    </Hero.Subtitle>
+                                    <Hero.Description>
+                                        {data.description}
+                                    </Hero.Description>                                   
+                                    <HeroOptions data={data} />
+                                </Hero.Container>                      
+                            </BackgroundImage>
+                                
+                            </Hero>                                                
                         {data.addresses && <Location addresses={data.addresses} location={{lat: data.latitude, long: data.longitude}} />}
                         <Hiking lat={data.latitude} long={data.longitude} />
                         <div className={"container"}>

@@ -13,12 +13,7 @@ export default function Routes() {
             <article>
                 <Switch>
                     <Route exact path="/" component={Home} />
-                    <Route path="/info/:parkID" component={ParkPage} />
-                    <Route path="/hello">
-                        <>
-                            Hello?
-                </>
-                    </Route>
+                    <Route path="/info/:parkID" component={ParkPage} />                   
                 </Switch>
             </article>            
             <footer>

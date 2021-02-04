@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function HeroOptions({ data }) {
     return (
-        <div className={"row hero_options"}>
+        <div className={"row hero-content_options"}>
             <div className={"col-3"}>
                 <p>News</p>
             </div>

@@ -90,8 +90,7 @@ class AutoComplete extends React.Component {
         const optionList = this.getOptionList();
 
         return (
-            <>  
-                <label>Find Your Park</label>
+            <div className={"searchBar"}>                  
                 <input
                     type={"text"}
                     className={"searchBar_box"}
@@ -103,7 +102,7 @@ class AutoComplete extends React.Component {
                     Search
                 </button>                
                 {optionList}
-            </>
+            </div>
         );
     }
 }
