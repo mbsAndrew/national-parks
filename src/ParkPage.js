@@ -41,9 +41,17 @@ class ParkPage extends React.Component {
             })
     }
 
+    randomNum = (min, max) => {
+        return Math.round(Math.random() * (max - min) + min);
+    }
+
+    selectHeroBackground = (imgs) => {        
+        return imgs[this.randomNum(0, imgs.length - 1)].url;
+    }
+
     render() {
         const { data } = this.state;
-        console.log(data);
+        console.log(data);        
         return (
             <>
                 {Object.keys(data).length > 0 ?
@@ -51,7 +59,7 @@ class ParkPage extends React.Component {
                             <Hero
                                 isFull
                             >
-                            <BackgroundImage src={data.images[2].url}>   
+                            <BackgroundImage src={this.selectHeroBackground(data.images)}>   
                                 <Hero.Container>
                                     <Hero.Title>
                                         {data.name}

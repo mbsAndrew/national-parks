@@ -9,42 +9,56 @@ const Hero = (props) => {
     )
 }
 
-const HeroTitle = ({addClass, children}) => {
+const HeroHOC = ({ component: Component, baseClass, ...other}) => {
+    //can put a transition in there using baseClass    
     return (
-        <h1 className={`hero-content_title ${addClass}`}>
+        <Component baseClass={baseClass} {...other} />
+    );
+};
+
+const HeroTitle = ({baseClass, addClass, children}) => {
+    return (
+        <h1 className={`${baseClass} ${addClass}`}>
             {children}
         </h1>
     )
 }
 
-const HeroSubtitle = ({addClass, children}) => {
+const HeroSubtitle = ({baseClass, addClass, children}) => {
     return (
-        <h2 className={`hero-content_subtitle ${addClass}`}>
+        <h2 className={`${baseClass} ${addClass}`}>
             {children}
         </h2>
     )
 };
 
-const HeroContainer = ({addClass, children}) => {
+const HeroContainer = ({baseClass, addClass, children}) => {
     return (
-        <div className={`section-hero_content hero-content ${addClass}`}>
+        <div className={`${baseClass} ${addClass}`}>
             {children}
         </div>
     );
 }
 
-const HeroDescription = ({addClass, children}) => {
+const HeroDescription = ({baseClass, addClass, children}) => {
     return (
-        <p className={`hero-content_description ${addClass}`}>
+        <p className={`${baseClass} ${addClass}`}>
             {children}
         </p>
     );
 }
 
-Hero.Title = HeroTitle;
-Hero.Subtitle = HeroSubtitle;
-Hero.Container = HeroContainer;
-Hero.Description = HeroDescription;
+const HeroOverlay = ({addClass, children}) => {
+    return (
+        <div className={"section-hero_overlay"} />
+    );
+}
+
+Hero.Title = (props) => <HeroHOC component={HeroTitle} baseClass={"hero-content_title"} {...props} />;
+Hero.Subtitle = (props) => <HeroHOC component={HeroSubtitle} baseClass={"hero-content_subtitle"} {...props} />;
+Hero.Container = (props) => <HeroHOC component={HeroContainer} baseClass={"section-hero_content hero-content"} {...props} />;
+Hero.Description = (props) => <HeroHOC component={HeroDescription} baseClass={"hero-content_description"} {...props} />;
+Hero.Overlay = (props) => <HeroHOC component={HeroOverlay} baseClass={"section-hero_overlay"} {...props} />;
 
 export default Hero;
 
