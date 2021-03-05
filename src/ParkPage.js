@@ -7,6 +7,7 @@ import HeroOptions from './Components/Hero/HeroOptions';
 import Hiking from './Components/Parks/Hiking';
 import LandingPage from './Components/LandingPage';
 import BackgroundImage from './Components/BackgroundImage';
+import { API_URL } from './services/url';
 
 class ParkPage extends React.Component {
     constructor() {
@@ -29,9 +30,8 @@ class ParkPage extends React.Component {
     }
 
     initData = () => {
-        const { parkID } = this.props.match.params;
-        console.log(parkID);
-        fetch(`https://national-parks-api.herokuapp.com/info/${parkID}`)
+        const { parkID } = this.props.match.params;                
+        fetch(`${API_URL}/info/${parkID}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);

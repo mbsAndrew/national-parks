@@ -11,8 +11,9 @@ export default function Routes() {
                 <NavBar />
             </header>            
             <article>
-                <Switch>
+                <Switch>                    
                     <Route exact path="/" component={Home} />
+                    <Route exact path="/national-parks" component={Home} />
                     <Route path="/info/:parkID" component={ParkPage} />                   
                 </Switch>
             </article>            
