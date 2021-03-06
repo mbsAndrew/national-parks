@@ -4,6 +4,7 @@ import AutoComplete from './Components/AutoComplete';
 import { Redirect } from 'react-router';
 import Search from './Components/Search';
 import LandingPage from './Components/LandingPage';
+import { CSSTransition } from 'react-transition-group';
 
 const Home = () => {
     const [data, setData] = useState(false);
@@ -40,14 +41,21 @@ const Home = () => {
     return (
         <>
             {data &&
-                <LandingPage>
-                <Search>
-                    <AutoComplete
-                        options={data}
-                        onSubmit={validate}
-                    />
-                </Search>
-                </LandingPage>                
+                <CSSTransition
+                    classNames={"example"}
+                >
+                <div className={"example"}>
+                    <LandingPage>
+                        <Search>
+                            <AutoComplete
+                                options={data}
+                                onSubmit={validate}
+                            />
+                        </Search>
+                    </LandingPage>
+                </div>
+                </CSSTransition>
+                             
             }
             {parkFound && <Redirect to={{
                 pathname: `/info/${parkFound}`,

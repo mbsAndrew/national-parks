@@ -5,7 +5,7 @@ const BackgroundImage = ({ src, children }) => {
         <>
             <div className={"background-image"}
                 style={{
-                    background: `url(${src})`,
+                    background: `linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url(${src})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center center"
                 }}

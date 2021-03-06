@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Karla:regular,bold,italic');
 @import url('https://fonts.googleapis.com/css?family=Lato:regular,bold,italic');
 
+//.block__element--modifier { css stuff }
 body {
     margin: 0;
     font-family: 'Lato';
@@ -44,6 +45,43 @@ article {
 
 ul {
   list-style-type: none;  
+}
+
+.example {
+  background: none;
+  &-enter-done {
+    background: red;
+  }
+}
+
+.container {
+  &_trail {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100vw;
+    min-height: 100vh;
+  }
+}
+
+.trail {
+  display: flex;  
+  flex-direction: column;  
+  width: 33%;
+  margin: 10px;
+
+  &__subtitle {
+    opacity: 0.7;
+  }
+
+  &__image {
+    max-width: 100%;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 100% 100%, 100% 100%, 20% 100%, 0 80%, 0 0);
+  }
+
+  &__body {
+    position: relative;
+  }
 }
 
 .page {

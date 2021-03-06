@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
 
 const Hero = (props) => {
     const { isFull, center } = props;
@@ -11,12 +12,24 @@ const Hero = (props) => {
 
 const HeroHOC = ({ component: Component, baseClass, ...other}) => {
     //can put a transition in there using baseClass    
+    const [appearIn, setAppearIn] = useState(false);
+    useEffect(() => {
+        setAppearIn(true);
+    }, []);
+    
     return (
-        <Component baseClass={baseClass} {...other} />
+        <CSSTransition  
+            in={appearIn}          
+            timeout={150}
+            key={baseClass}
+            classNames={baseClass}                     
+        >
+            <Component baseClass={baseClass} {...other} />
+        </CSSTransition>
     );
 };
 
-const HeroTitle = ({baseClass, addClass, children}) => {
+const HeroTitle = ({baseClass, addClass = "", children}) => {
     return (
         <h1 className={`${baseClass} ${addClass}`}>
             {children}
@@ -24,7 +37,7 @@ const HeroTitle = ({baseClass, addClass, children}) => {
     )
 }
 
-const HeroSubtitle = ({baseClass, addClass, children}) => {
+const HeroSubtitle = ({baseClass, addClass = "", children}) => {
     return (
         <h2 className={`${baseClass} ${addClass}`}>
             {children}
@@ -32,7 +45,7 @@ const HeroSubtitle = ({baseClass, addClass, children}) => {
     )
 };
 
-const HeroContainer = ({baseClass, addClass, children}) => {
+const HeroContainer = ({baseClass, addClass = "", children}) => {
     return (
         <div className={`${baseClass} ${addClass}`}>
             {children}
@@ -40,7 +53,7 @@ const HeroContainer = ({baseClass, addClass, children}) => {
     );
 }
 
-const HeroDescription = ({baseClass, addClass, children}) => {
+const HeroDescription = ({baseClass, addClass = "", children}) => {
     return (
         <p className={`${baseClass} ${addClass}`}>
             {children}

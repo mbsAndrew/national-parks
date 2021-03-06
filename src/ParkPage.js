@@ -72,8 +72,7 @@ class ParkPage extends React.Component {
                                     </Hero.Description>                                   
                                     <HeroOptions data={data} />
                                 </Hero.Container>                      
-                            </BackgroundImage>
-                                
+                            </BackgroundImage>                                
                             </Hero>                                                
                         {data.addresses && <Location addresses={data.addresses} location={{lat: data.latitude, long: data.longitude}} />}
                         <Hiking lat={data.latitude} long={data.longitude} />
