@@ -1,1 +1,0 @@
-export const API_URL = "https://national-parks-api.herokuapp.com";
