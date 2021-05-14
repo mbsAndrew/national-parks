@@ -12,14 +12,22 @@ const Home = () => {
     const [newParkData, setParkData] = useState(false);
 
     useEffect(() => {
-        const newData = parkData.map(m => m["Location Name"]);
+        const newData = parkData.map(m => {
+            return {
+                name: m["Location Name"],
+                code: m["Location Number"]
+            }
+        });
         setData(newData);
     }, []);
 
+    const getParkCode = (val) => {
+       return data.filter(f => f.name.includes(val))[0].code ?? "";
+    };
+
     const validate = (e) => {
-        const { val } = e.target.dataset;
-        console.log(process.env.REACT_APP_API_URL);
-        fetch(`https://national-parks-api.herokuapp.com/findPark/${val}`)
+        const { val } = e.target.dataset;        
+        fetch(`https://national-parks-api.herokuapp.com/findPark/${getParkCode(val)}`)
             .then(res => res.json())
             .then(data => {
                 if (Number(data.total) > 0) {
@@ -48,7 +56,7 @@ const Home = () => {
                     <LandingPage>
                         <Search>
                             <AutoComplete
-                                options={data}
+                                options={data.map(m => m.name)}
                                 onSubmit={validate}
                             />
                         </Search>

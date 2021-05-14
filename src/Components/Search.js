@@ -5,7 +5,7 @@ const Search = ({children}) => {
         <div className={"search"}>
             <div className={"search-card"}>
                 <h2 className={"search-card_title"}>
-                    FInd Your Park
+                    Find Your Park
                 </h2>
                 {children}
             </div>
