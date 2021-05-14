@@ -74,8 +74,9 @@ Trail.Rating = Rating;
 Trail.Info = Info;
 Trail.Detail = Detail;
 
-export const TrailContainer = ({ data }) => {
-    console.log(data);
+export const TrailContainer = ({ data }) => {    
+    //figure out scrolling here
+
     return <section className={"section section_fill-white"}>
         <div className={"container_trail"}>
             {data.map(item =>
