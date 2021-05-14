@@ -177,7 +177,7 @@ ul {
     overflow-x: hidden;
     
     &_full {
-      min-height: 100vh;      
+      min-height: 100vh;         
     }
 
     &_center {
@@ -192,6 +192,12 @@ ul {
 
     &-title {
       font-size: 2rem;
+    }
+  }
+
+  &_fill {
+    &-white {
+      background: white;
     }
   }
 }
@@ -217,6 +223,14 @@ ul {
 
         &_title {
           order: 1;
+          opacity: 0;
+          margin-top: 100%;
+          transition: 0.2s ease-in margin, 0.35s ease-in opacity;
+
+          &-enter-done {
+            margin-top: 0;
+            opacity: 1;
+          }
         }
 
         &_subtitle {

@@ -76,21 +76,23 @@ Trail.Detail = Detail;
 
 export const TrailContainer = ({ data }) => {
     console.log(data);
-    return <div className={"container_trail"}>
-        {data.map(item => 
-            <Trail>
-                <Trail.Image data={item}>
-                    <Trail.Info data={item}>
-                        <Trail.Title>
-                            {item.name}
-                        </Trail.Title>
-                        <Trail.Subtitle>
-                            {`Rating: ${item.stars}`}
-                        </Trail.Subtitle>
-                    </Trail.Info>
-                </Trail.Image>
-            </Trail>
-        )}
-    </div>
+    return <section className={"section section_fill-white"}>
+        <div className={"container_trail"}>
+            {data.map(item =>
+                <Trail>
+                    <Trail.Image data={item}>
+                        <Trail.Info data={item}>
+                            <Trail.Title>
+                                {item.name}
+                            </Trail.Title>
+                            <Trail.Subtitle>
+                                {`Rating: ${item.stars}`}
+                            </Trail.Subtitle>
+                        </Trail.Info>
+                    </Trail.Image>
+                </Trail>
+            )}
+        </div>
+    </section>
     //use this to render instead of having everything
 };
