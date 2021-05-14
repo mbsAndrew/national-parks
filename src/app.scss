@@ -76,7 +76,8 @@ ul {
 
   &__image {
     max-width: 100%;
-    clip-path: polygon(0 0, 100% 0, 100% 0, 100% 100%, 100% 100%, 20% 100%, 0 80%, 0 0);
+    // clip-path: polygon(0 0, 100% 0, 100% 0, 100% 100%, 100% 100%, 20% 100%, 0 80%, 0 0);
+    border-radius: 2rem;
   }
 
   &__body {
@@ -85,11 +86,46 @@ ul {
 
   &__info {
     position: absolute;
-    top:0;
+    top:70%;    
+    color: white;
     right: 0;
-    bottom: 0;
+    bottom: 3px;
     left:0;
+    padding: 1rem; 
+    cursor: pointer;
     background: rgba(0,0,0,0.7);
+    transition: 0.2s ease-in-out top, cubic-bezier(0.075, 0.82, 0.165, 1) border-radius;
+    border-radius: 0 0 2rem 2rem;
+
+
+    .trail__details {
+      margin-top: 100%;
+      transition: 0.25s ease-in margin, 0.1s ease-out margin;
+      display: flex;      
+
+      &_spec {
+        flex: 1;
+      }
+    }
+
+
+    &--open {
+      top: 0;
+      border-radius: 2rem;
+
+      .trail__details {
+        margin-top: 5%;       
+      }
+    }   
+  }
+
+  &__toggle {      
+
+    &__icon {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+    }
   }
 }
 

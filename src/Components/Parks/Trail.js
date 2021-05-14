@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ChevronDown, ChevronUp, Map, Rulers, Triangle } from 'react-bootstrap-icons';
 
 const Title = ({children}) => {
     return <h3 className={"trail__title"}>{children}</h3>;
@@ -26,47 +27,67 @@ const Trail = (props) => {
         </div>;
 };
 
-const MoreInfo = ({ data }) => {
+const Info = ({ data, children }) => {
     const [isOpen, setOpenStatus] = useState(false);
 
     const toggleOpen = () => {
         setOpenStatus(!isOpen);
     }
-
-    return <div className={`trail__info trail__details ${isOpen && "trail__info--open"}`}>
-        <div className={"trail__details__toggle"} onClick={toggleOpen}>
-            <span>X</span>
+    console.log(data);
+    return <div className={`trail__info ${isOpen && "trail__info--open"}`}>        
+        <div className={"trail__toggle"} onClick={toggleOpen}>
+            {children}
+            <span className={"trail__toggle__icon"}>
+                {isOpen ? <ChevronDown /> : <ChevronUp />}
+            </span>
         </div>
-        <div className={"trail__details__info"}>
-            <p>
-                {data.conditionDetails}
-            </p>
-            <p>
-                {data.conditionStatus}
-            </p>
+        <div className={"trail__details"}>
+            <Detail 
+                dataPoint={data.location}
+                icon={<Map title={"Location"} />}
+            />
+            <Detail
+                dataPoint={data.length}
+                icon={<Rulers title={"Length"} />}
+            />
+            <Detail 
+                dataPoint={data.ascent}
+                icon={<Triangle title={"Ascent"} />}
+            />          
         </div>
     </div>
-};
+}; 
+
+const Detail = ({ dataPoint, data, icon}) => {
+    return (
+        <div className={`trail__details_spec`}>
+            <h5>{dataPoint}</h5>
+            {icon}
+        </div>
+    );
+}
 
 Trail.Title = Title;
 Trail.Subtitle = Subtitle;
 Trail.Image = Image;
 Trail.Rating = Rating;
-Trail.MoreInfo = MoreInfo;
+Trail.Info = Info;
+Trail.Detail = Detail;
 
 export const TrailContainer = ({ data }) => {
     console.log(data);
     return <div className={"container_trail"}>
         {data.map(item => 
             <Trail>
-                <Trail.Title>
-                    {item.name}
-                </Trail.Title>
-                <Trail.Subtitle>
-                    {`Rating: ${item.stars}`}
-                </Trail.Subtitle>
                 <Trail.Image data={item}>
-                    <Trail.MoreInfo data={item} />
+                    <Trail.Info data={item}>
+                        <Trail.Title>
+                            {item.name}
+                        </Trail.Title>
+                        <Trail.Subtitle>
+                            {`Rating: ${item.stars}`}
+                        </Trail.Subtitle>
+                    </Trail.Info>
                 </Trail.Image>
             </Trail>
         )}
