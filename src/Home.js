@@ -5,6 +5,7 @@ import { Redirect } from 'react-router';
 import Search from './Components/Search';
 import LandingPage from './Components/LandingPage';
 import { CSSTransition } from 'react-transition-group';
+import { API_URL } from './services/url';
 
 const Home = () => {
     const [data, setData] = useState(false);
@@ -27,7 +28,7 @@ const Home = () => {
 
     const validate = (e) => {
         const { val } = e.target.dataset;        
-        fetch(`https://national-parks-api.herokuapp.com/findPark/${getParkCode(val)}`)
+        fetch(`${API_URL}/findPark/${getParkCode(val)}`)
             .then(res => res.json())
             .then(data => {
                 if (Number(data.total) > 0) {

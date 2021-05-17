@@ -83,6 +83,7 @@ ul {
 
   &__body {
     position: relative;
+    overflow: hidden;
   }
 
   &__info {
@@ -211,6 +212,7 @@ ul {
     z-index: -1;
 }
 
+/* ALL HERO CSS */
 .hero {
     min-height: 100vh;
     position: relative; 
