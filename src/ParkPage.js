@@ -1,5 +1,5 @@
 import React from 'react';
-import Activities from './Components/Parks/Activities';
+import Activities from './Components/Parks/Activities/Activities';
 import Topics from './Components/Parks/Topics';
 import Location from './Components/Parks/Location';
 import Hero from './Components/Hero/Hero';
@@ -34,7 +34,7 @@ class ParkPage extends React.Component {
         fetch(`${API_URL}/info/${parkID}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                console.log("infoData", data);
                 this.setState({
                     data: data.data[0]
                 });
