@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const List = ({ activities, onClick }) => {
+    const [isOpen, setOpen] = useState(false);
     return (
-        <div className={"activities__list"}>
-            <ul className={""}>
-                {activities.map((m, i) => {
-                    return <li className={""} onClick={() => onClick(i)}>{m.name}</li>
-                })}
-            </ul>
-        </div>
+        <>
+        <button type={"button"} className={"activity__toggle"} onClick={() => setOpen(!isOpen)}>
+            X
+        </button>
+            {isOpen &&
+                <ul className={"activity__list"}>                    
+                    {activities.map((m, i) => {
+                        return <li className={"activity__list__item"} onClick={() => onClick(i)}>{m.name}</li>
+                    })}
+                </ul>
+            }       
+        </>
     )
 };
 
