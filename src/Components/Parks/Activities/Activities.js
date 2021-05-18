@@ -5,7 +5,7 @@ import Highlight from './Highlight';
 import List from './List';
 
 export default function Activities (params) { 
-    const [activeIndex, setIndex] = useState(0);
+    const [activeIndex, setIndex] = useState(randomNum(0, params.activities.length));
     const [activeImage, setActiveImage] = useState("");
     const [images, setIndexImage] = useState([]);    
     console.log(params);
@@ -36,13 +36,15 @@ export default function Activities (params) {
 
     return (
         <section>
-        <h2>
-            Activities
-        </h2>
-        <div className={"activity"}>
-            {activeImage && <Highlight image={activeImage} title={params.activities[activeIndex]} />}
-            <List activities={params.activities} onClick={updateIndex} />
-        </div>
+            <div className={"container"}>
+                <h2>
+                    Activities
+                </h2>
+            </div>
+            <div className={"activity"}>
+                {activeImage && <Highlight image={activeImage} title={params.activities[activeIndex]} />}                
+                <List activities={params.activities} onClick={updateIndex} />
+            </div>
         </section>
     )
 }

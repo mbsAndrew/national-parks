@@ -46,6 +46,8 @@ article {
 
 ul {
   list-style-type: none;  
+  padding: 0;
+  margin: 0;
 }
 
 .example {
@@ -248,6 +250,9 @@ ul {
 
         &_options {
           order: 3;
+          display: flex;
+          align-items: flex-end;
+          flex: 1;
           .col-3 {
             border: 1px solid white;
             border-radius: 5px;
@@ -289,6 +294,54 @@ ul {
   }
 
 }  
+
+.activity {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+
+  &__image {
+    position: absolute;
+    width: 100%;
+    height: auto;
+
+
+    z-index: -1;
+    filter: opacity(0.7);
+  }
+
+  &__details {
+    flex: 3;
+    padding: 1rem 2rem;
+  }
+
+  &__list {
+    flex: 1;
+    display: flex;    
+    flex-wrap: wrap;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    padding: 1rem;    
+    background: rgba(255,255,255,0.5);
+    backdrop-filter: blur(3px);
+
+    &_blur {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: #222;
+      opacity: 0.15;
+      filter: blur(10px);
+    }
+
+    &__item {
+      width: 50%;
+    }
+  }
+}
 
 
 //grid

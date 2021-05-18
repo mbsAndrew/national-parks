@@ -76,16 +76,8 @@ class ParkPage extends React.Component {
                             </Hero>                                                
                         {data.addresses && <Location addresses={data.addresses} location={{lat: data.latitude, long: data.longitude}} />}
                         <Hiking lat={data.latitude} long={data.longitude} />
-                        <section className={"section section_fill-white"}>
-                            <div className={"container"}>
-                                <div className={"row"}>
-                                    <div className={"col-12"}>
-                                        {data.activities && <Activities activities={data.activities} />}
-                                        {data.topics && <Topics topics={data.topics} />}
-                                    </div>
-                                </div>
-                            </div>
-                        </section>                                               
+                        {data.activities && <Activities activities={data.activities} />}
+                        {data.topics && <Topics topics={data.topics} />}                                                                      
                     </>
                     : "No data son!"}
             </>
