@@ -7,12 +7,34 @@
   }
 }
 
+@mixin smallScreen {
+  @media (max-width:767px) {
+    @content;
+  }
+}
+
+@mixin activityBackdrop {
+    background: rgba(10,111,171,0.4);
+    backdrop-filter: blur(4px);
+    color: white;
+    padding: 1.5rem;
+}
+
 //.block__element--modifier { css stuff }
 body {
     margin: 0;
     font-family: 'Lato';
     font-size: 16px;
     line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;  
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -304,27 +326,27 @@ ul {
 .activity {
   position: relative;
   display: flex;  
+
+  @include fullScreen() {
+    margin: 4rem 0;
+  }
   
 
   &__toggle {
     outline: none;
     border: none;     
     position: absolute; 
-    top: 0;
-    right: 0;
-    height: 2rem;
-    z-index: 10;
-    width: 2rem;
+    top: -2%;
+    right: 2%;    
+    z-index: 10;    
     cursor: pointer;
+    @include activityBackdrop;
   }
 
   &__image {
     flex: 1;
     width:100%;
-
-    @include fullScreen() {
-      max-width: 80vw;
-    }
+    
   }
 
   &__user {
@@ -332,29 +354,40 @@ ul {
     flex-direction: column;
   }
 
-  &__details {
-    flex: 3;    
-    display: flex;
-    flex-direction: column;
+  &__details {  
+    position: relative;  
+    
 
-    @include fullScreen() {
-      flex-direction: row;      
-    }
+    @include smallScreen() {
+      flex-direction: row;
+      flex: 3;    
+      display: flex;
+      flex-direction: column;
+    }    
     
     &__title {
-      flex: 1;
-      align-self: flex-start;
-      position: relative;
-      h3 {
-        @include fullScreen() {
-          transform: rotate(90deg) translateZ(0);        
-          transform-origin: 23% 200%;
-          position: absolute;
-          left: 50px;
-          top: 30px;
-          
-        }
-      }      
+        flex: 1;
+        order: 0;
+        align-self: flex-start;
+        position: relative;
+
+      @include fullScreen() {
+        position: absolute;
+        left: 3%;
+        top: -4%;
+        @include activityBackdrop;       
+        font-size: 3rem;
+      }
+                
+    }
+
+    &__user {        
+      @include fullScreen() {
+        position: absolute;
+        right: 3%;
+        bottom: -9%;        
+        @include activityBackdrop;  
+      }
     }
    
   }
@@ -390,7 +423,7 @@ ul {
 .image {
   &-details {
     flex: 1;
-    align-items: flex-end;
+    align-items: flex-start;
     display: flex;
 
     &__user {
@@ -410,7 +443,7 @@ ul {
 
       &__social {
         width: 100%;
-        padding: 0.5rem 1rem;
+        padding: 1rem 0rem;
       }
     }
   }
