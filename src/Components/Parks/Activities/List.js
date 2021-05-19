@@ -3,6 +3,12 @@ import { CSSTransition } from 'react-transition-group';
 
 const List = ({ activities, onClick }) => {
     const [isOpen, setOpen] = useState(false);
+
+    const returnClick = (index) => {
+        setOpen(!isOpen);
+        onClick(index);
+    }
+
     return (
         <>
         <button type={"button"} className={"activity__toggle"} onClick={() => setOpen(!isOpen)}>
@@ -16,7 +22,7 @@ const List = ({ activities, onClick }) => {
             >
                 <ul className={"activity__list"}>
                     {activities.map((m, i) => {
-                        return <li className={"activity__list__item"} onClick={() => onClick(i)}>{m.name}</li>
+                        return <li className={"activity__list__item"} onClick={() => returnClick(i)}>{m.name}</li>
                     })}
                 </ul>
             </CSSTransition>

@@ -4,7 +4,8 @@ import { TrailContainer } from './Trail';
 
 const Hiking = ({lat, long}) => {
     const [data, setData] = useState(false);
-
+    console.log(lat);
+    console.log(long);
     useEffect(() => {
         fetch(`${API_URL}/get-trails?lat=${lat}&long=${long}`)
         .then(res => res.json())
@@ -12,7 +13,7 @@ const Hiking = ({lat, long}) => {
             setData(data.trails);            
             console.log(data);               
         })
-    }, []);
+    }, [lat, long]);
     
     return (
         <>

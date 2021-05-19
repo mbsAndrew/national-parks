@@ -1,7 +1,6 @@
 import React from 'react';
 
-const Highlight = ({ image, title, onLoad }) => {
-    console.log(image);
+const Highlight = ({ image, title }) => {    
     const { profile_image, name, instagram_username, twitter_username } = image.user
     return (
         <>

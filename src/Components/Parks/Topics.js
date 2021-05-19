@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function Topics(params) {
+    console.log(params.topics);
     return (
         <section>
             <h2>Topics</h2>

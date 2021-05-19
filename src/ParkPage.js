@@ -1,13 +1,12 @@
 import React from 'react';
 import Activities from './Components/Parks/Activities/Activities';
-import Topics from './Components/Parks/Topics';
 import Location from './Components/Parks/Location';
 import Hero from './Components/Hero/Hero';
 import HeroOptions from './Components/Hero/HeroOptions';
 import Hiking from './Components/Parks/Hiking';
-import LandingPage from './Components/LandingPage';
 import BackgroundImage from './Components/BackgroundImage';
 import { API_URL } from './services/url';
+import Articles from './Components/Parks/Articles/Articles';
 
 class ParkPage extends React.Component {
     constructor() {
@@ -50,8 +49,8 @@ class ParkPage extends React.Component {
     }
 
     render() {
-        const { data } = this.state;
-        console.log(data);        
+        const { data } = this.state;        
+        const { parkID } = this.props.match.params;          
         return (
             <>
                 {Object.keys(data).length > 0 ?
@@ -76,8 +75,9 @@ class ParkPage extends React.Component {
                             </Hero>                                                
                         {data.addresses && <Location addresses={data.addresses} location={{lat: data.latitude, long: data.longitude}} />}
                         <Hiking lat={data.latitude} long={data.longitude} />
-                        {data.activities && <Activities activities={data.activities} />}
-                        {data.topics && <Topics topics={data.topics} />}                                                                      
+                        {data.activities && <Activities list={data.activities} />}
+                        <Articles parkID={parkID} />
+                        {data.topics && <Activities list={data.topics} title={"Topics"} />}                                                                      
                     </>
                     : "No data son!"}
             </>

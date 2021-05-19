@@ -4,12 +4,11 @@ import randomNum from '../../../util';
 import Highlight from './Highlight';
 import List from './List';
 
-export default function Activities (params) { 
-    const [activeIndex, setIndex] = useState(randomNum(0, params.activities.length));
+const Activities = ({ list, title = "Activities" }) => { 
+    const [activeIndex, setIndex] = useState(randomNum(0, list.length));
     const [activeImage, setActiveImage] = useState("");
-    const [images, setIndexImage] = useState([]);  
-    const [height, setHeight] = useState("100vh");
-    console.log(params);
+    const [images, setIndexImage] = useState([]);      
+    
     useEffect(() => {
         getNewImage(activeIndex);
     }, [activeIndex]);
@@ -20,7 +19,7 @@ export default function Activities (params) {
             setActiveImage(images[index]);
         } else {
             //grab an image from the API
-            const { name } = params.activities[index];
+            const { name } = list[index];
             fetch(`${API_URL}/images?page=1&query=${name}`)
                 .then(res => res.json())
                 .then(res => {
@@ -36,29 +35,25 @@ export default function Activities (params) {
     }
 
     //updates the index when they click on a new activity
-    const updateIndex = (newIndex) => setIndex(newIndex);    
-
-    const updateHeight = (e) => {        
-        console.log(e.target.height);
-        setHeight(`${e.target.height}px`);
-    };
+    const updateIndex = (newIndex) => setIndex(newIndex);
 
     return (
         <section>
             <div className={"container"}>
                 <h2>
-                    Activities
+                    {title}
                 </h2>                
             </div>
             <div className={"activity"}>
                 {activeImage && <Highlight
                     image={activeImage}
-                    title={params.activities[activeIndex]}
-                    onLoad={updateHeight}
+                    title={list[activeIndex]}                    
                 />}
-                <List activities={params.activities} onClick={updateIndex} />
+                <List activities={list} onClick={updateIndex} />
             </div>
             
         </section>
     )
 }
+
+export default React.memo(Activities);
