@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Highlight = ({image, title}) => { 
+const Highlight = ({image, title, onLoad}) => { 
     console.log(image);   
     const { profile_image, name, instagram_username, twitter_username } = image.user
     return (
         <>
-        <img className={"activity__image"} src={image.urls.regular} alt={image.alt_description} />   
+        <img className={"activity__image"} src={image.urls.regular} alt={image.alt_description} onLoad={onLoad} />   
         <div className={"activity__details"}>
             <h3 className={"activity__details__title"}>
                 {title.name}
