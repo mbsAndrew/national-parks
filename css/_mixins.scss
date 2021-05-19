@@ -1,0 +1,18 @@
+@mixin fullScreen {
+    @media (min-width:768px) {
+      @content;
+    }
+  }
+  
+  @mixin smallScreen {
+    @media (max-width:767px) {
+      @content;
+    }
+  }
+  
+  @mixin activityBackdrop {
+      background: rgba(10,111,171,0.4);
+      backdrop-filter: blur(4px);
+      color: white;
+      padding: 1.5rem;
+  }

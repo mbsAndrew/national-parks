@@ -1,0 +1,17 @@
+.searchBar {
+    label {
+        display: block;
+    }
+    &_box {
+        background: none;
+        outline: 1px solid white;
+        padding: 1em;
+        width:75%;
+        color:white;
+    }
+
+    &_btn {
+        padding: 1em;
+        cursor: pointer;
+    }
+}

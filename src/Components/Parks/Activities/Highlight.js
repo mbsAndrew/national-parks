@@ -6,10 +6,10 @@ const Highlight = ({ image, title, onLoad }) => {
     return (
         <>
             <div className={"activity__details"}>
-                <div className={"activity__user image-details"}>
-                    <div className={"activity__details__title"}>
-                        <h3>{title.name}</h3>
-                    </div>                   
+                <h3 className={"activity__details__title"}>
+                    {title.name}
+                </h3>
+                <div className={"activity__details__user activity__user image-details"}>                                    
                     <div className={"image-details__user"}>
                         <img className={"image-details__user__headshot"} src={profile_image.medium} alt={name} />
                         <div className={"image-details__user__name"}>

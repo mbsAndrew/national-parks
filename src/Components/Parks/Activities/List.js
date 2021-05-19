@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
 
 const List = ({ activities, onClick }) => {
     const [isOpen, setOpen] = useState(false);
@@ -6,14 +7,19 @@ const List = ({ activities, onClick }) => {
         <>
         <button type={"button"} className={"activity__toggle"} onClick={() => setOpen(!isOpen)}>
             X
-        </button>
-            {isOpen &&
-                <ul className={"activity__list"}>                    
+        </button>                           
+            <CSSTransition
+                in={isOpen}
+                timeout={150}
+                key={"activity__list"}
+                classNames={"activity__list"}
+            >
+                <ul className={"activity__list"}>
                     {activities.map((m, i) => {
                         return <li className={"activity__list__item"} onClick={() => onClick(i)}>{m.name}</li>
                     })}
                 </ul>
-            }       
+            </CSSTransition>
         </>
     )
 };

@@ -45,17 +45,20 @@ export default function Activities (params) {
 
     return (
         <section>
-            <div className={"container activity"}>
-                <h2 className={"activity__title"}>
+            <div className={"container"}>
+                <h2>
                     Activities
-                </h2>
+                </h2>                
+            </div>
+            <div className={"activity"}>
+                {activeImage && <Highlight
+                    image={activeImage}
+                    title={params.activities[activeIndex]}
+                    onLoad={updateHeight}
+                />}
                 <List activities={params.activities} onClick={updateIndex} />
             </div>
-            {activeImage && <Highlight
-                image={activeImage}
-                title={params.activities[activeIndex]}
-                onLoad={updateHeight}
-            />}   
+            
         </section>
     )
 }
