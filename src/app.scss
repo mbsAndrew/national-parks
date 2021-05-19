@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Karla:regular,bold,italic');
 @import url('https://fonts.googleapis.com/css?family=Lato:regular,bold,italic');
 
+@mixin fullScreen {
+  @media (min-width:768px) {
+    @content;
+  }
+}
+
 //.block__element--modifier { css stuff }
 body {
     margin: 0;
@@ -298,6 +304,7 @@ ul {
 .activity {
   position: relative;
   display: flex;  
+  
 
   &__toggle {
     outline: none;
@@ -312,10 +319,17 @@ ul {
   }
 
   &__image {
-    position: absolute;
-    width: 100%;
-    height: auto;
-    z-index: -1;    
+    flex: 1;
+    width:100%;
+
+    @include fullScreen() {
+      max-width: 80vw;
+    }
+  }
+
+  &__user {
+    display: flex;
+    flex-direction: column;
   }
 
   &__details {
@@ -323,10 +337,26 @@ ul {
     display: flex;
     flex-direction: column;
 
-    &__title {
-      font-size: 3rem;
-      padding: 2rem;
+    @include fullScreen() {
+      flex-direction: row;      
     }
+    
+    &__title {
+      flex: 1;
+      align-self: flex-start;
+      position: relative;
+      h3 {
+        @include fullScreen() {
+          transform: rotate(90deg) translateZ(0);        
+          transform-origin: 23% 200%;
+          position: absolute;
+          left: 50px;
+          top: 30px;
+          
+        }
+      }      
+    }
+   
   }
 
   &__list {
@@ -366,10 +396,7 @@ ul {
     &__user {
       display: flex;
       flex-wrap: wrap;
-      padding: 1rem 2rem;
-      color: #fff;
-      backdrop-filter: blur(6px);
-      width: 100%;
+      padding: 1rem 2rem;                  
 
       &__headshot {
         border-radius: 50%;
