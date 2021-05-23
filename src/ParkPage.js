@@ -32,8 +32,7 @@ class ParkPage extends React.Component {
         const { parkID } = this.props.match.params;                
         fetch(`${API_URL}/info/${parkID}`)
             .then(res => res.json())
-            .then(data => {
-                console.log("infoData", data);
+            .then(data => {                
                 this.setState({
                     data: data.data[0]
                 });

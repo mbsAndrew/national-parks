@@ -30,8 +30,7 @@ const Articles = ({ parkID }) => {
         });
     }
     
-    const getActiveArticles = () => {        
-        console.log([...articles.filter((f, i) => i <= page).flat()]);
+    const getActiveArticles = () => {                
         return [...articles.filter((f, i) => i <= page).flat()];
     }   
     

@@ -32,8 +32,7 @@ const Info = ({ data, children }) => {
 
     const toggleOpen = () => {
         setOpenStatus(!isOpen);
-    }
-    console.log(data);
+    }    
     return <div className={`trail__info ${isOpen && "trail__info--open"}`}>        
         <div className={"trail__toggle"} onClick={toggleOpen}>
             {children}
