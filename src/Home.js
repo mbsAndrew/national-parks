@@ -32,7 +32,8 @@ const Home = () => {
             .then(res => res.json())
             .then(data => {
                 if (Number(data.total) > 0) {                    
-                    const park = data.data.filter(f => f.fullName.includes(val))[0];                    
+                    const park = data.data.filter(f => f.fullName.includes(val))[0];         
+                               
                     if (park) {
                         setFound(park.parkCode);
                         setParkData(park);
