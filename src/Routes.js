@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router';
 import Home from './Home';
 import ParkPage from './ParkPage';
 import NavBar from './Components/NavBar';
+import Footer from './Components/Footer';
 
 export default function Routes() {
     return (
@@ -17,9 +18,7 @@ export default function Routes() {
                     <Route path="/info/:parkID" component={ParkPage} />                   
                 </Switch>
             </article>            
-            <footer>
-                I'm a footer, bitch!
-            </footer>
+            <Footer />
         </div>
     )
 }

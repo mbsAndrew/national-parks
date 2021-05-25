@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { API_URL } from '../../../services/url';
 
 const Articles = ({ parkID }) => {
-    const [articles, setArticle] = useState(false);
-    const [active, setActive] = useState([]);
+    const [articles, setArticle] = useState(false);    
     const [page, setPage] = useState(0);    
 
     useEffect(() => {                                  
@@ -30,8 +29,7 @@ const Articles = ({ parkID }) => {
         });
     }
     
-    const getActiveArticles = () => {        
-        console.log([...articles.filter((f, i) => i <= page).flat()]);
+    const getActiveArticles = () => {                
         return [...articles.filter((f, i) => i <= page).flat()];
     }   
     
@@ -47,7 +45,7 @@ const Articles = ({ parkID }) => {
             {getActiveArticles().map((m, i) => {
                 const isFeature = i % 3 === 0;
                 return (
-                    <a href={m.url} target={"_blank"}>
+                    <a className={"article__link"} href={m.url} target={"_blank"}>
                         <div className={`article ${isFeature && "article_feature"}`}>
                             <img className={"article__image"} src={m.listingImage.url} alt={m.listingImage.altText} />
                             <div className={"article__body"}>
@@ -61,8 +59,8 @@ const Articles = ({ parkID }) => {
                 );
             })}
             <div className={"article__buttons"}>
-                {page > 0 && <button type={"button"} className={"article__button"} onClick={readLess}>Read Less</button>}
-                <button type={"button"} className={"article__button"} onClick={readMore}>
+                {page > 0 && <button type={"button"} className={"article__button article__button_less"} onClick={readLess}>Read Less</button>}
+                <button type={"button"} className={"article__button article__button_more"} onClick={readMore}>
                         Read More
                 </button>
             </div>            

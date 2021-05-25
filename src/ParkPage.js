@@ -74,7 +74,7 @@ class ParkPage extends React.Component {
                             </BackgroundImage>                                
                             </Hero>                                                
                         {data.addresses && <Location addresses={data.addresses} location={{lat: data.latitude, long: data.longitude}} />}
-                        <Hiking lat={data.latitude} long={data.longitude} />
+                        {/* <Hiking lat={data.latitude} long={data.longitude} /> */}
                         {data.activities && <Activities list={data.activities} />}
                         <Articles parkID={parkID} />
                         {data.topics && <Activities list={data.topics} title={"Topics"} />}                                                                      

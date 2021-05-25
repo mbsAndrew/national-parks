@@ -1,0 +1,41 @@
+$border-color: #f8f8f8;
+
+.footer {
+    &__container {
+        display: flex;
+        justify-content: space-around;
+        padding: 2rem;
+        background: rgba($color: #000000, $alpha: 0.85);
+        color: white;
+        margin-top: 3rem;
+
+        @include smallScreen() {
+            flex-direction: column;
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+
+        &__item {
+            padding: 0.75rem 0.25rem;            
+
+            &_title {
+                font-weight: 600;
+                border-bottom: 2px solid $border-color;
+            }
+        }
+    }
+
+    &__link {
+        border-left: 2px solid transparent;
+        padding-left: 10px;
+        transition: 0.25s border-left ease-in-out;
+
+        &:hover {
+            border-left: 2px solid $border-color; 
+            text-decoration: none;
+        }
+    }
+}

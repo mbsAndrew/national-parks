@@ -29,7 +29,10 @@
 
         &_description {
           order: 2;
-          padding-right: 45%;
+         
+          @include fullScreen() {
+            padding-right: 45%;
+          }
         }
 
         &_options {
