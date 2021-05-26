@@ -63,6 +63,7 @@
           position: absolute;
           right: 3%;
           bottom: -9%;        
+          max-width: 45vw;
           @include activityBackdrop;  
         }
       }
@@ -112,7 +113,7 @@
     &-details {
       flex: 1;
       align-items: flex-start;
-      display: flex;
+      display: flex;      
 
       &__photoBy {
         width: 100%;
@@ -128,7 +129,7 @@
           border-radius: 50%;
         }
   
-        &__name {
+        &__name, &__link {
           align-self: center;
           padding-left: 1rem;
           page-break-after: always;

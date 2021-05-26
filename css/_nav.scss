@@ -1,0 +1,10 @@
+.nav {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: flex-end;
+
+    &__link {
+        padding: 0.75rem;
+    }
+}
