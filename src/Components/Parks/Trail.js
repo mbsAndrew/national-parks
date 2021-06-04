@@ -68,36 +68,10 @@ const Detail = ({ dataPoint, data, icon}) => {
 }
 
 const Scroll = ({ direction = "left", onScroll}) => {   
-    const isLeft = direction === "left";
-    useEffect(() => {
-        return detach;
-    },[]);
-
-    function scrollAction(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        const isUp = e.deltaY < 0;
-        let returnOffset = 0;        
-        if (isLeft && isUp) {
-            returnOffset = 20;
-        } else if (!isLeft && !isUp) {
-            returnOffset = -20;
-        }
-        onScroll(returnOffset);           
-    }
-
-    //attach the scroll event on entering and detach it after mouse leave
-    const attachScroll = () => {
-        console.log("attaching");
-        window.addEventListener("wheel", scrollAction, {passive: false});
-    }
-    const detach = () => {
-        console.log("detaching");
-        window.removeEventListener("wheel", scrollAction, {passive: false});
-    }
-
+    const isLeft = direction === "left";     
+    const scrollClick = () => onScroll(isLeft ? 20 : -20);
     return (
-        <div onMouseEnter={attachScroll} onMouseLeave={detach} className={`trail__scroll trail__scroll_${direction}`}>
+        <div onClick={scrollClick} className={`trail__scroll trail__scroll_${direction}`}>
             <span>
                 {isLeft ? "<" : ">"}
             </span>
