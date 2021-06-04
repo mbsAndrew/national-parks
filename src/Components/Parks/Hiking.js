@@ -10,8 +10,7 @@ const Hiking = ({lat, long}) => {
         fetch(`${API_URL}/get-trails?lat=${lat}&long=${long}`)
         .then(res => res.json())
         .then(data => {
-            setData(data.trails);            
-            console.log(data);               
+            setData(data.trails);                                      
         })
     }, [lat, long]);
     
