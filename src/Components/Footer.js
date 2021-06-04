@@ -16,7 +16,7 @@ const Link = ({ link, text }) => {
 
 const Footer = () => {
     return (
-        <section className={"footer__section"}>
+        <footer className={"footer__section"}>
             <div className={"footer__container"}>
                 <List>
                     <ListItem isTitle>
@@ -44,7 +44,7 @@ const Footer = () => {
                     </ListItem>
                 </List>
             </div>
-        </section>
+        </footer>
     );
 };
 
