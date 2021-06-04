@@ -1,20 +1,13 @@
 import React from 'react';
 
-export default function HeroOptions({ data }) {
+export default function HeroOptions({ data, onClick, refData }) {    
     return (
         <div className={"row hero-content_options"}>
-            <div className={"col-3"}>
-                <p>News</p>
-            </div>
-            <div className={"col-3"}>
-                <p>Activities</p>
-            </div>
-            <div className={"col-3"}>
-                <p>Hiking</p>
-            </div>
-            <div className={"col-3"}>
-                <p>Location & Hours</p>
-            </div>
+            {Object.values(refData).map(item => {                
+                return <div onClick={() => onClick(item.ref)} className={"col-3"}>
+                    <p>{item.text}</p>
+                </div>
+            })}            
         </div>  
     );
 }
