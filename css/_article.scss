@@ -41,8 +41,20 @@
     }
 
     &__button {
+
+        &:not(:last-child) {
+            margin-right: 0.75rem;
+        }
+
+        @include button;
         align-self: center;
-        padding: 0.75rem;
-        margin: 0 0.75rem;
+        padding: 0.75rem;        
+        border: 2px solid $softBlue;
+        transition: background 0.25s ease-in-out;
+
+        &:hover {
+            background: $softBlue;
+            color: $white;
+        }
     }
 }

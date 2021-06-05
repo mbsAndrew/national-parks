@@ -1,17 +1,48 @@
-.searchBar {
-    label {
-        display: block;
-    }
-    &_box {
-        background: none;
-        outline: 1px solid white;
-        padding: 1em;
-        width:75%;
-        color:white;
-    }
+.search {
 
-    &_btn {
-        padding: 1em;
-        cursor: pointer;
-    }
+    &-bar {
+
+        label {
+            display: block;
+        }
+
+        &__box {
+            background: none;
+            outline: 1px solid white;
+            padding: 1em;
+            width:75%;
+            color:white;
+            border:none;
+        }
+
+        &__results {
+            min-height: 150px;
+        }
+
+        &__button {
+            outline: 1px solid $white;
+            padding: 1em;
+            cursor: pointer;
+            border:none;
+            background: $softBlue;
+    
+            &:hover {
+                background: rgba($softBlue, $alpha: 0.8);
+            }
+        }
+
+        &__list {
+            li {
+                padding: 3px;
+                border-left: 2px solid transparent;
+                transition: border 0.25s ease-in-out;
+                cursor: pointer;
+
+                &:hover {
+                    border-left: 2px solid $softBlue;
+                    font-weight: bolder;
+                }
+            }
+        }
+    }    
 }

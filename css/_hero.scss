@@ -47,6 +47,11 @@
             cursor: pointer;
             padding: 1rem;
           }
+
+          @include smallScreen() {
+            flex-direction: column;
+            justify-content: flex-end;
+          }
         }
     }
 

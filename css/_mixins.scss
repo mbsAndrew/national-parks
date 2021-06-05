@@ -11,8 +11,14 @@
   }
   
   @mixin activityBackdrop {
-      background: rgba(10,111,171,0.4);
+      background: rgba($softBlue, 0.4);
       backdrop-filter: blur(4px);
       color: white;
       padding: 1.5rem;
   }
+
+@mixin button {
+  outline: none;
+  background: rgba($white,0);
+  cursor: pointer;
+}

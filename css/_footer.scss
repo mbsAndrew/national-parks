@@ -1,6 +1,10 @@
 $border-color: #f8f8f8;
 
 .footer {
+    &__section {
+        margin-top: 10rem;
+    }
+
     &__container {
         display: flex;
         justify-content: space-around;
