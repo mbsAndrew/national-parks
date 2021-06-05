@@ -23,11 +23,12 @@
 
 .trail {
     display: flex;  
-    flex-direction: column;  
-    width: 33%;
+    flex-direction: column;   
     margin: 10px;
 
-    
+    @include fullScreen() {
+      width: 33%;
+    }
 
     &__container {
       display: flex;
