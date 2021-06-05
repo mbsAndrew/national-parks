@@ -8,7 +8,7 @@ const Location = ({ addresses, location}) => {
     }
 
     return (
-        <>
+        <div className={"location container"}>
           <div className={"location__address"}>
             <h2 className={"location__address_phsyical"}>
               {formatAddress(physicalAddress)}
@@ -17,7 +17,7 @@ const Location = ({ addresses, location}) => {
           <div className={"location__coord"}>
             
           </div>
-        </>        
+        </div>        
     )
 }
 

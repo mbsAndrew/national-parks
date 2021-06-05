@@ -19,7 +19,7 @@ const ParkPage = ({ location, match }) => {
     const refs = {
         NEWS: { text: "News", ref: newsRef},
         ACTIVITES: {text: "Activities", ref: activitiesRef},
-        HIKING: {text: "Hiking", ref: hikingRef},
+        TRAIL: {text: "Hiking", ref: hikingRef},
         LOCATION: {text: "Location & Hours", ref: locationRef}
     }
 
@@ -84,9 +84,9 @@ const ParkPage = ({ location, match }) => {
                         <Section ref={locationRef} name={"location"}>
                             {data.addresses && <Location addresses={data.addresses} location={{lat: data.latitude, long: data.longitude}} />}                        
                         </Section>               
-                        {/* <Section ref={hikingRef} name={"hiking"}>
+                        <Section ref={hikingRef} name={"hiking"}>
                             <Hiking lat={data.latitude} long={data.longitude} />
-                        </Section> */}
+                        </Section>
                         <Section ref={activitiesRef} name={"activites"}>
                             {data.activities.length > 0 && <Activities list={data.activities} />}
                         </Section>

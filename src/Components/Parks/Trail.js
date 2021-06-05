@@ -96,7 +96,7 @@ export const TrailContainer = ({ data }) => {
         });
     }
 
-    return <section className={"section trail__section section_fill-white"}>
+    return <>
         <Scroll onScroll={onScroll} />
         <Scroll direction={"right"} onScroll={onScroll} />
         <div style={{left: `${offset}px`, right: `${Math.abs(offset)}px`}} className={"trail__container"}>
@@ -114,8 +114,6 @@ export const TrailContainer = ({ data }) => {
                     </Trail.Image>
                 </Trail>
             )}
-        </div>
-       
-    </section>
-    //use this to render instead of having everything
+        </div>       
+    </>    
 };

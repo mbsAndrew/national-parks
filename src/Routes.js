@@ -7,7 +7,7 @@ import Footer from './Components/Footer';
 
 export default function Routes() {
     return (
-        <div>
+        <>
             <header>
                 <NavBar />
             </header>            
@@ -19,6 +19,6 @@ export default function Routes() {
                 </Switch>
             </article>            
             <Footer />
-        </div>
+        </>
     )
 }

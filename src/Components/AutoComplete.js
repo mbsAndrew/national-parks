@@ -58,7 +58,7 @@ class AutoComplete extends React.Component {
         if (showOptions && userInput) {
             if (filteredOptions.length) {
                 optionList = (
-                    <ul className="searchBar_options">
+                    <ul className="search-bar__list">
                         {filteredOptions.map((optionName, index) => {
                             let className;
                             if (index === activeOption) {
@@ -90,18 +90,20 @@ class AutoComplete extends React.Component {
         const optionList = this.getOptionList();
 
         return (
-            <div className={"searchBar"}>                  
+            <div className={"search-bar"}>                  
                 <input
                     type={"text"}
-                    className={"searchBar_box"}
+                    className={"search-bar__box"}
                     onChange={this.onChange}
                     onKeyDown={this.onKeyDown}
                     value={userInput}
                 />
-                <button type={"button"} data-val={userInput} className={"searchBar_btn"} onClick={this.props.onSubmit}>
+                <button type={"button"} data-val={userInput} className={"search-bar__button"} onClick={this.props.onSubmit}>
                     Search
-                </button>                
-                {optionList}
+                </button>
+                <div className={"search-bar__results"}>
+                    {optionList}
+                </div>
             </div>
         );
     }

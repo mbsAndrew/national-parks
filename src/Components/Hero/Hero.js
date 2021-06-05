@@ -39,9 +39,9 @@ const HeroTitle = ({baseClass, addClass = "", children}) => {
 
 const HeroSubtitle = ({baseClass, addClass = "", children}) => {
     return (
-        <h2 className={`${baseClass} ${addClass}`}>
+        <p className={`${baseClass} ${addClass}`}>
             {children}
-        </h2>
+        </p>
     )
 };
 

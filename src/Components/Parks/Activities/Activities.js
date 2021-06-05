@@ -19,6 +19,7 @@ const Activities = ({ list, title = "Activities" }) => {
             setActiveImage(images[index]);
         } else {
             //grab an image from the API
+            console.log(index);
             const { name } = list[index];
             fetch(`${API_URL}/images?page=1&query=${name}`)
                 .then(res => res.json())
@@ -38,7 +39,7 @@ const Activities = ({ list, title = "Activities" }) => {
     const updateIndex = (newIndex) => setIndex(newIndex);
 
     return (
-        <section>
+        <>
             <div className={"container"}>
                 <h2>
                     {title}
@@ -52,7 +53,7 @@ const Activities = ({ list, title = "Activities" }) => {
                 <List activities={list} onClick={updateIndex} />
             </div>
             
-        </section>
+        </>
     )
 }
 
