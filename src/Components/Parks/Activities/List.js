@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import Toggle from './Toggle';
 
 const List = ({ activities, onClick }) => {
     const [isOpen, setOpen] = useState(false);
@@ -11,9 +12,7 @@ const List = ({ activities, onClick }) => {
 
     return (
         <>
-        <button type={"button"} className={"activity__toggle"} onClick={() => setOpen(!isOpen)}>
-            X
-        </button>                           
+        <Toggle open={isOpen} onClick={() => setOpen(!isOpen)} />                                
             <CSSTransition
                 in={isOpen}
                 timeout={150}

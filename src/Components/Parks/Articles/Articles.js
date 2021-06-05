@@ -35,7 +35,7 @@ const Articles = ({ parkID }) => {
     
 
     return (
-        <section>
+        <>
             <div className={"container"}>
                 <h2 className={"section__header"}>
                     Articles
@@ -44,6 +44,7 @@ const Articles = ({ parkID }) => {
         {articles && <div className={"article__container"}>
             {getActiveArticles().map((m, i) => {
                 const isFeature = i % 3 === 0;
+                console.log(m);
                 return (
                     <a className={"article__link"} href={m.url} target={"_blank"}>
                         <div className={`article ${isFeature && "article_feature"}`}>
@@ -66,7 +67,7 @@ const Articles = ({ parkID }) => {
             </div>            
         </div>
         }
-        </section>
+        </>
     );
 };
 

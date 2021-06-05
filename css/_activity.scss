@@ -104,6 +104,14 @@
   
       &__item {
         width: 50%;
+        margin:2px 0;
+        border-bottom: 1px solid transparent;
+        transition: 0.3s border-bottom ease-in-out;
+
+        &:hover {
+          border-bottom: 1px solid black;
+          font-weight: bolder;
+        }
       }
     }
   }
@@ -142,3 +150,41 @@
       }
     }
   }
+
+
+.toggle {
+
+  &__bar {
+    height: 2px;
+    width: 2vw;
+    background: white;
+    transition: 0.25s transform ease-in;
+
+    &:not(:last-child) {
+      margin-bottom: 5px;
+    }
+  }
+
+  &_open {
+    div.toggle {
+      &__bar {        
+
+        &:first-child {
+          transform: rotate(45deg);
+          transform-origin: 0 -14%;
+        }
+
+        &:last-child {
+          transform: rotate(-45deg);
+          transform-origin: left bottom;
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  
+}
